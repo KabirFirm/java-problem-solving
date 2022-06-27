@@ -64,41 +64,26 @@ public class MaxCounters {
 
     public static int[] solution(int N, int[] A){
 
-        /*// correctness = 100%, performance = 20%, score = 55%
+        /*// correctness = 100%, performance = 60%, score = 77%
         int[] result = new int[N]; // create and initiate result array of length N and initial value 0
-        HashMap <Integer, Integer> occurrencesMap = new HashMap<Integer, Integer>(); //hash map to set unique number and store max value
-
-        // find unique number from given array A, and set each unique number's max value to 0(zero)
-        for (int i = 0; i < A.length; i++){
-            if(A[i] <= N) occurrencesMap.put(A[i], 0); //set max counter for i element
-        }
 
         int globalMax = 0; // set globalMax value to 0
 
         for (int i = 0; i < A.length; i++) {
-            int tempValue = A[i];
             // if number of i index is less than or equal to N
             if(A[i] <= N){
                 // get this individual number's max value
-                int maxNumber = occurrencesMap.get(A[i]);
+                int maxNumber = result[A[i] - 1];
                 maxNumber++; // increment individual number's value by 1
 
                 //update globalMax
                 if(globalMax < maxNumber) globalMax = maxNumber;
+                result[A[i] - 1] = maxNumber;
 
-                // store max number for each individual number
-                occurrencesMap.put(A[i],maxNumber);
-
-                result[tempValue - 1] = maxNumber;
             }else if(A[i] == N + 1){ // if number of i index is equal to N + 1
-
                 // set entire result array to max value
                 for (int j = 0; j < N; j++){
                     result[j] = globalMax;
-                }
-                //set each unique number max value to global Max
-                for (int num: occurrencesMap.keySet()) {
-                    occurrencesMap.put(num,globalMax);
                 }
             }
         }
