@@ -18,7 +18,6 @@ package com.egeneration;
 
         */
 
-
 public class BinaryGap {
     public static int solution(int N){
         int binaryGap = 0, tempCount = 0;
