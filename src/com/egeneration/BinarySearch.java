@@ -30,9 +30,25 @@ public class BinarySearch {
         return -1;
     }
 
+/*    public static void pyramid(int n) {
+        for(int i = n; i >0; i --){
+            for( int j = n - i; j > 0; j--) {
+                System.out.print(" ");
+            }
+            for (int k = 2 * i; k > 0; k--){
+                System.out.print("*");
+            }
+            System.out.println("");
+
+        }
+    }*/
+
+
     public static void main(String[] args) {
         int[] array = {2, 3, 5, 7, 11, 13, 17, 19};
         int target = 10;
         System.out.println(solution(array, target));
+        //pyramid(10);
+
     }
 }
