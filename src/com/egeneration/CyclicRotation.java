@@ -44,19 +44,14 @@ each element of array A is an integer within the range [−1,000..1,000].
 public class CyclicRotation {
 
     public static int[] solution(int[] A, int K){
-        // if given array contains no element or only one element, just return same array.
-        if(A.length <= 1) return A;
-
-        // temp to store last element of given array
-        int temp = 0;
+        // if given array contains no element or only one element OR numberOfRotation, K value is 0, just return same array.
+        if(A.length <= 1 || K == 0) return A;
         // how many shifting required
         for(int i = 0; i < K; i++){
+            // temp to store last element of given array
+            int temp = A[A.length - 1];
             // rotate array from last element and decrease
             for(int j = A.length - 1; j > 0; j--){
-                // assign last element to temp
-                if(j == A.length - 1) {
-                    temp = A[j];
-                }
                 // assign a element to next index.
                 A[j] = A[j-1];
             }
@@ -67,11 +62,6 @@ public class CyclicRotation {
     }
 
     public static void main(String[] args) {
-        /*int[] result = solution(new int[]{1, 2, 3, 4},2);
-        for (int a: result
-             ) {
-            System.out.println(a);
-        }*/
         System.out.println(Arrays.toString(solution(new int[]{1},2)));
     }
 }
