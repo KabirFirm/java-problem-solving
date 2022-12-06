@@ -74,6 +74,56 @@ public class Playground {
         System.out.println(Arrays.toString(inputArray));
     }
 
+    // FrogJmp
+    public static int frogJump(int X, int Y, int D) {
+
+        /*
+        // this also works but score = 11%. what a shame !
+        int minimalNumberOfJumps = 0;
+        int distanceCovered = X;
+        while (distanceCovered <= Y) {
+            minimalNumberOfJumps++;
+            distanceCovered += D;
+        }
+        return minimalNumberOfJumps;*/
+        return (int) Math.ceil((double)( Y - X ) / D );
+
+    }
+
+    // PermMissingElem
+
+    public static int permMissingElem(int[] A) {
+        long length = A.length + 1;
+
+        long sumOfAllElement = length * (length + 1) /2;
+        long sum = 0L;
+        for(int i: A){
+            sum += i;
+        }
+
+        return (int) (sumOfAllElement - sum);
+    }
+
+    public static int tapeEquilibrium(int[] A) {
+        long sumOfAllElement = 0L;
+        for(int i: A) {
+            sumOfAllElement += i;
+        }
+
+        int minDifference = Integer.MAX_VALUE;
+        int currentDifference = Integer.MAX_VALUE;
+        long sumOfFirstPart = 0L;
+
+        for(int i = 0; i < A.length - 1; i++){
+            sumOfFirstPart += A[i];
+            long sumOfSecondPart = sumOfAllElement - sumOfFirstPart;
+            currentDifference = (int) Math.abs(sumOfFirstPart - sumOfSecondPart);
+            minDifference = Math.min(minDifference, currentDifference);
+        }
+
+        return minDifference;
+    }
+
 
     public static void main(String[] args) {
 
@@ -90,8 +140,26 @@ public class Playground {
         System.out.println(oddOccurrenceInArray(inputArray));
         */
 
+        /*
         // Selection sort
         int[] inputArray = {22, 11, 99, 88, 9, 7, 42};
         selectionSort(inputArray);
+        */
+
+        /*
+        // FrogJmp
+        int startingPoint = 10;
+        int endingPoint = 85;
+        int singleJumpDistance = 30;
+        System.out.println(frogJump(startingPoint,endingPoint,singleJumpDistance));
+        */
+
+        /*
+        // PermMissingElem
+        System.out.println(permMissingElem(new int[] {2,3,1,5}));
+        */
+
+        // tapeEquilibrium
+        System.out.println(tapeEquilibrium(new int[] {3,1,2,4,3}));
     }
 }

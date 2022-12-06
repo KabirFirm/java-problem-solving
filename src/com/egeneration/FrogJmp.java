@@ -39,6 +39,9 @@ public class FrogJmp {
         //compact form
         return ( Y - X ) / D + ((Y - X) % D == 0? 0 : 1);
 
+        //another solution
+        //return (int) Math.ceil((double)( Y - X ) / D );
+
     }
 
     public static void main(String[] args) {
