@@ -67,7 +67,9 @@ public class Playground {
         int minIndex = 0;
         for(int i = 0; i < inputArray.length; i++) {
             minIndex = indexOfMinimum(inputArray,i);
-            inputArray = swap(inputArray,i,minIndex);
+            if(minIndex > i) {
+                inputArray = swap(inputArray,i,minIndex);
+            }
         }
         System.out.println(Arrays.toString(inputArray));
     }
