@@ -41,6 +41,38 @@ public class Playground {
     }
 
 
+    // Selection sort
+
+    public static int indexOfMinimum(int[] inputArray, int startIndex) {
+        int minIndex = startIndex;
+        int minValue = inputArray[startIndex];
+        for(int i = startIndex + 1; i < inputArray.length; i++) {
+            if(inputArray[i] < minValue) {
+                minIndex = i;
+                minValue = inputArray[minIndex];
+            }
+        }
+        return minIndex;
+    }
+
+    public static int[] swap(int[] inputArray, int firstIndex, int secondIndex) {
+        int temp = inputArray[firstIndex];
+        inputArray[firstIndex] = inputArray[secondIndex];
+        inputArray[secondIndex] = temp;
+        return inputArray;
+    }
+
+    public static void selectionSort(int[] inputArray) {
+        int minValue = inputArray[0];
+        int minIndex = 0;
+        for(int i = 0; i < inputArray.length; i++) {
+            minIndex = indexOfMinimum(inputArray,i);
+            inputArray = swap(inputArray,i,minIndex);
+        }
+        System.out.println(Arrays.toString(inputArray));
+    }
+
+
     public static void main(String[] args) {
 
         /*
@@ -50,8 +82,14 @@ public class Playground {
         System.out.println(Arrays.toString(cyclicRotation(inputArray,numberOfShift)));
         */
 
+        /*
         // oddOccurrenceInArray function section
         int[] inputArray = {1000000, 1000000, 1000000, 2000000, 1000000, 30000000, 5000000, 2000000, 30000000};
         System.out.println(oddOccurrenceInArray(inputArray));
+        */
+
+        // Selection sort
+        int[] inputArray = {22, 11, 99, 88, 9, 7, 42};
+        selectionSort(inputArray);
     }
 }
