@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class Playground {
-
     // cyclicRotation
     public static int[] cyclicRotation(int[] A, int K) {
         if(A.length < 2 || K == 0)  return A;
