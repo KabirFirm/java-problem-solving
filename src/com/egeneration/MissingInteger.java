@@ -23,6 +23,7 @@ each element of array A is an integer within the range [−1,000,000..1,000,000]
  */
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class MissingInteger {
     public static int solution(int[] A) {
@@ -39,7 +40,17 @@ public class MissingInteger {
 
         int missingElement =1;
 
-        HashMap<Integer, Integer> occurrencesMap = new HashMap<Integer, Integer>();
+        HashSet<Integer> singleOccurance = new HashSet<Integer>();
+        for(int i =0 ; i < A.length; i++) {
+            if(A[i] > 0) singleOccurance.add(A[i]);
+        }
+
+        for (int i = 1; i <= singleOccurance.size(); i++){
+            if (singleOccurance.contains(missingElement)) missingElement++;
+            else return missingElement;
+        }
+
+        /*HashMap<Integer, Integer> occurrencesMap = new HashMap<Integer, Integer>();
         for (int i = 0; i < A.length; i++){
             if(occurrencesMap.containsKey(A[i])){
                 int occurrences = occurrencesMap.get(A[i]);
@@ -55,7 +66,7 @@ public class MissingInteger {
             }else {
                 return missingElement;
             }
-        }
+        }*/
 
         return missingElement;
     }

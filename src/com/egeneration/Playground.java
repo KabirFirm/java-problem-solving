@@ -242,6 +242,33 @@ public class Playground {
         return true; // already return result.this line will be never executed
     }
 
+    public static int missingInteger(int[] A) {
+
+        // Score - 33%, correctness- 40%,performance - 25%
+        HashSet<Integer> singleOccurance = new HashSet<Integer>();
+        for(int i =0 ; i < A.length; i++) {
+            if(A[i] > 0) singleOccurance.add(A[i]);
+        }
+        int missingElement = 1;
+
+        for (int i = 1; i <= singleOccurance.size(); i++){
+            if (singleOccurance.contains(missingElement)) missingElement++;
+            else return missingElement;
+        }
+
+        /*int singleOccuranceLength = singleOccurance.size();
+        double allNumberSum = 0d;
+        allNumberSum = ((singleOccuranceLength + 1) * (singleOccuranceLength + 2)) / 2;
+        double actualSum = 0d;
+        for(int obj: singleOccurance){
+            actualSum+= obj;
+        }
+
+        return (int)(allNumberSum - actualSum);*/
+
+        return missingElement;
+    }
+
 
     public static void main(String[] args) {
 
@@ -303,7 +330,10 @@ public class Playground {
         /*// factorial, recursion
         System.out.println(factorial(4));*/
 
-        // palindrome
-        System.out.println(isPalindrome("RR"));
+        /*// palindrome
+        System.out.println(isPalindrome("RR"));*/
+
+        // missingInteger
+        System.out.println(missingInteger(new int[] {-1,-3}));
     }
 }
