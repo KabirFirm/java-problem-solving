@@ -1,8 +1,6 @@
 package com.egeneration;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 public class Playground {
     // cyclicRotation
@@ -123,6 +121,83 @@ public class Playground {
         return minDifference;
     }
 
+    public static int frogRiverOne(int X, int[] A) {
+        HashSet<Integer> currentNumbers = new HashSet<Integer>();
+        HashSet<Integer> requiredNumbers = new HashSet<Integer>();
+
+        for(int j = 1; j <= X; j++) {
+            requiredNumbers.add(j);
+        }
+        for (int i = 0; i < A.length; i++) {
+            currentNumbers.add(A[i]);
+            if(currentNumbers.size() < requiredNumbers.size()) continue;
+            if(currentNumbers.containsAll(requiredNumbers)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int permCheck(int[] A) {
+        int isPermutation = 0;
+        HashSet<Integer> requiredNumbers = new HashSet<Integer>();
+        HashSet<Integer> currentNumbers = new HashSet<Integer>();
+
+        for (int i = 0; i < A.length; i++) {
+            currentNumbers.add(A[i]);
+            requiredNumbers.add(i+1);
+        }
+        if(currentNumbers.containsAll(requiredNumbers)) {
+            isPermutation = 1;
+        }
+
+
+        return isPermutation;
+    }
+
+    public static int[] maxCounters(int N, int[]A) {
+        int[] resultArray = new int[N];
+        int maximumValue = 0;
+        int lastResetCounter = 0;
+        for (int i = 0; i < A.length; i++) {
+            if(A[i] <= N){
+                if(resultArray[A[i]-1] < lastResetCounter) {
+                    resultArray[A[i]-1] = lastResetCounter;
+                }
+                resultArray[A[i] - 1]++;
+                if(resultArray[A[i] - 1] > maximumValue) maximumValue = resultArray[A[i] - 1];
+                System.out.println("resultArray = " + Arrays.toString(resultArray) + " maximumValue = " + maximumValue);
+            }else {
+                lastResetCounter = maximumValue;
+                System.out.println("lastResetCounter = " + lastResetCounter);
+            }
+
+        }
+        for(int i = 0; i < N; i++) {
+            if(resultArray[i] < lastResetCounter) {
+                resultArray[i] = lastResetCounter;
+            }
+        }
+        return resultArray;
+    }
+
+    public static int[] insertionSort(int array[]) {
+        int len = array.length;
+        for (int i = 1; i < len; i++) {
+            int value = array[i];
+            int index = i;
+            for (int j = i - 1; j >= 0; j--) {
+                if (array[j] > value) {
+                    int temp = array[j];
+                    array[j] = value;
+                    array[index] = temp;
+                    index = j;
+                }
+            }
+        }
+        return array;
+    }
+
 
     public static void main(String[] args) {
 
@@ -158,7 +233,23 @@ public class Playground {
         System.out.println(permMissingElem(new int[] {2,3,1,5}));
         */
 
-        // tapeEquilibrium
-        System.out.println(tapeEquilibrium(new int[] {3,1,2,4,3}));
+        /*// tapeEquilibrium
+        System.out.println(tapeEquilibrium(new int[] {3,1,2,4,3}));*/
+
+        /*// frogRiverOne
+        System.out.println(frogRiverOne(5,new int[] {1,4,3,3,6,9,7,4,8,1,5}));*/
+
+        /*// frogRiverOne
+        System.out.println(permCheck(new int[] {2,3,4,1,3}));*/
+
+        /*// maxCounters
+        System.out.println(Arrays.toString(maxCounters(5,new int[] {3,4,4,6,1,4,4})));*/
+
+        // insertion sort from Mahua apa
+        int array[] = {9, 10, 3, 2, 3, 5, 1, 7, 9};
+        array = insertionSort(array);
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
     }
 }
