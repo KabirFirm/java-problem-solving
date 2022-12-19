@@ -198,6 +198,50 @@ public class Playground {
         return array;
     }
 
+    public static void twoDArray(int[][] A) {
+        int length = A[0].length;
+        // iterate each row of the array
+        for (int i = 0; i < A.length; i++) {
+            // iterate each column of a specific row
+            for (int j = 0; j < length; j++) {
+                System.out.print(A[i][j]); // print each item
+                if(j == length - 1) { // each item of a row print already
+                    // go to diagonal down
+                    for (int k = i+1; k < A.length; k++) {
+                        System.out.print(A[k][j]);
+                    }
+                }
+
+            }
+            length--;
+        }
+    }
+
+    public static int factorial(int number) {
+        int result = 1;
+
+        if( number == 0){
+            return 1;
+        }
+        return number * factorial(number - 1);
+    }
+
+    public static boolean isPalindrome(String str) {
+        if (str.length() == 0 || str.length() == 1) {
+            return true;
+        }
+
+        if(str.charAt(0) == str.charAt(str.length() - 1)) {
+            // Removing first and last character
+            // of a string using substring() method
+            str = str.substring(1, str.length() - 1);
+            isPalindrome(str);
+        }else {
+            return false;
+        }
+        return true; // already return result.this line will be never executed
+    }
+
 
     public static void main(String[] args) {
 
@@ -245,11 +289,21 @@ public class Playground {
         /*// maxCounters
         System.out.println(Arrays.toString(maxCounters(5,new int[] {3,4,4,6,1,4,4})));*/
 
-        // insertion sort from Mahua apa
+        /*// insertion sort from Mahua apa
         int array[] = {9, 10, 3, 2, 3, 5, 1, 7, 9};
         array = insertionSort(array);
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);
-        }
+        }*/
+
+        /*// 2D array
+        int[][] myNumbers = { {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5} };
+        twoDArray(myNumbers);*/
+
+        /*// factorial, recursion
+        System.out.println(factorial(4));*/
+
+        // palindrome
+        System.out.println(isPalindrome("RR"));
     }
 }
