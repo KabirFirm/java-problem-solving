@@ -211,11 +211,11 @@ public class Playground {
                         System.out.print(A[k][j]);
                     }
                 }
-
             }
             length--;
         }
     }
+
 
     public static int factorial(int number) {
         int result = 1;
@@ -267,6 +267,15 @@ public class Playground {
         return (int)(allNumberSum - actualSum);*/
 
         return missingElement;
+    }
+
+    public static int countDiv(int A, int B, int K) {
+        // Add 1 explicitly as A is divisible by M
+        if(A % K == 0) {
+            return (B/K) - (A/K) + 1;
+        }
+        // A is not divisible by M
+        return (B/K) - (A/K);
     }
 
 
@@ -333,7 +342,10 @@ public class Playground {
         /*// palindrome
         System.out.println(isPalindrome("RR"));*/
 
-        // missingInteger
-        System.out.println(missingInteger(new int[] {-1,-3}));
+        /*// missingInteger
+        System.out.println(missingInteger(new int[] {-1,-3}));*/
+
+        //countDiv
+        System.out.println(countDiv(6,11,3));
     }
 }

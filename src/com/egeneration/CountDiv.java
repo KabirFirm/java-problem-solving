@@ -31,6 +31,7 @@ public class CountDiv {
 
         return countNumber;*/
 
+        /*// correctness - 100%, performance - 100%, score - 100%
         int divisors = 0;
 
         //nothing to do when K > B
@@ -72,7 +73,15 @@ public class CountDiv {
             divisors += ((lastNonZeroDivisor - firstNonZeroDivisor) / K) + 1;
         }
 
-        return divisors;
+        return divisors;*/
+        // correctness - 100%, performance - 100%, score - 100%
+
+        // Add 1 explicitly as A is divisible by M
+        if(A % K == 0) {
+            return (B/K) - (A/K) + 1;
+        }
+        // A is not divisible by M
+        return (B/K) - (A/K);
     }
 
     public static void main(String[] args){
