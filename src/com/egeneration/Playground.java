@@ -2,6 +2,8 @@ package com.egeneration;
 
 import java.util.*;
 
+import static java.lang.Math.abs;
+
 public class Playground {
     // cyclicRotation
     public static int[] cyclicRotation(int[] A, int K) {
@@ -114,7 +116,7 @@ public class Playground {
         for(int i = 0; i < A.length - 1; i++){
             sumOfFirstPart += A[i];
             long sumOfSecondPart = sumOfAllElement - sumOfFirstPart;
-            currentDifference = (int) Math.abs(sumOfFirstPart - sumOfSecondPart);
+            currentDifference = (int) abs(sumOfFirstPart - sumOfSecondPart);
             minDifference = Math.min(minDifference, currentDifference);
         }
 
@@ -244,7 +246,6 @@ public class Playground {
 
     public static int missingInteger(int[] A) {
 
-        // Score - 33%, correctness- 40%,performance - 25%
         HashSet<Integer> singleOccurance = new HashSet<Integer>();
         for(int i =0 ; i < A.length; i++) {
             if(A[i] > 0) singleOccurance.add(A[i]);
@@ -256,7 +257,9 @@ public class Playground {
             else return missingElement;
         }
 
-        /*int singleOccuranceLength = singleOccurance.size();
+        /*
+        // Score - 33%, correctness- 40%,performance - 25%
+        int singleOccuranceLength = singleOccurance.size();
         double allNumberSum = 0d;
         allNumberSum = ((singleOccuranceLength + 1) * (singleOccuranceLength + 2)) / 2;
         double actualSum = 0d;
@@ -278,6 +281,33 @@ public class Playground {
         return (B/K) - (A/K);
     }
 
+    public static double powRecursiveA(int x, int n) {
+        if(n == 0) {
+            return 1;
+        }
+        if(n < 0) {
+            return 1 / powRecursiveA(x,abs(n));
+        }
+        return x * powRecursiveA(x, n - 1);
+    }
+
+    public static double powRecursiveB(int x, int n) {
+        // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
+        if(n == 0) {
+            return 1;
+        }
+        if(n > 0) {
+            if( n % 2 == 0){
+                double half = powRecursiveB(x, n / 2);
+                return half * half;
+            }else {
+                return x * powRecursiveB(x, n - 1);
+            }
+
+        }else {
+            return 1 / powRecursiveB(x, abs(n));
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -347,5 +377,28 @@ public class Playground {
 
         //countDiv
         System.out.println(countDiv(6,11,3));
+        // power recursive
+        // Algorithm A is O(n) while Algorithm B is, in fact, O( log(n) ).
+        //This makes a big difference if n is large.
+
+        /*A method:
+        x^8= x^7 * x (need to find x^7)
+        x^7= x^6 * x (need to find x^6)
+        x^6= x^5 * x (need to find x^5)
+        x^5= x^4 * x (need to find x^4)
+        x^4= x^3 * x (need to find x^3)
+        x^3= x^2 * x (need to find x^2)
+        x^2= x^1 * x (need to find x^1)
+        x^1= x^0 * x (need to find x^0)
+        x^0 = 1
+
+        B method:
+        x^8= x^4 * x^4 (need to find x^4)
+        x^4= x^2 * x^2 (need to find x^2)
+        x^2= x^1 * x^1 (need to find x^1)
+        x^1= x^0 * x (need to find x^0)
+        x^0 = 1*/
+        System.out.println(powRecursiveA(2,0));
+        System.out.println(powRecursiveB(2,0));
     }
 }
