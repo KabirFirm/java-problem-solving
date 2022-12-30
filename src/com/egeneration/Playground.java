@@ -309,6 +309,47 @@ public class Playground {
         }
     }
 
+    public static int minAvgTwoSlice(int [] A) {
+        double average1 = Double.MAX_VALUE;
+        double average2 = Double.MAX_VALUE;
+        double average3 = Double.MAX_VALUE;
+        double minimumAverage = Double.MAX_VALUE;
+        int sum1, sum2, sum3;
+        int minimumIndex = 0; // this is always true for two element of array
+
+        for (int i = 0; i < A.length - 2; i++) {
+
+            // two consecutive numbers
+            sum1 = A[i] + A[i+1];
+            average1 = sum1 / 2.0d;
+
+            //check minimumAverage
+            if(minimumAverage > average1) {
+                minimumAverage = average1;
+                minimumIndex = i;
+            }
+            // three consecutive numbers
+            sum2 = sum1 + A[i+2];
+            average2 = sum2 / 3.0d;
+
+            //check minimumAverage
+            if(minimumAverage > average2) {
+                minimumAverage = average2;
+                minimumIndex = i;
+            }
+        }
+
+        sum3 = A[A.length - 2] + A[A.length -1];
+        average3 = sum3 / 2.0d;
+
+        //check minimumAverage
+        if(minimumAverage > average3) {
+            minimumIndex = A.length - 2;
+        }
+
+        return minimumIndex;
+    }
+
     public static void main(String[] args) {
 
         /*
