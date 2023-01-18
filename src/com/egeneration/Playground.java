@@ -417,7 +417,7 @@ public class Playground {
         System.out.println(missingInteger(new int[] {-1,-3}));*/
 
         //countDiv
-        System.out.println(countDiv(6,11,3));
+        //System.out.println(countDiv(6,11,3));
         // power recursive
         // Algorithm A is O(n) while Algorithm B is, in fact, O( log(n) ).
         //This makes a big difference if n is large.
@@ -439,7 +439,21 @@ public class Playground {
         x^2= x^1 * x^1 (need to find x^1)
         x^1= x^0 * x (need to find x^0)
         x^0 = 1*/
-        System.out.println(powRecursiveA(2,0));
-        System.out.println(powRecursiveB(2,0));
+        /*System.out.println(powRecursiveA(2,0));
+        System.out.println(powRecursiveB(2,0));*/
+
+        ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+        myNumbers.add(33);
+        myNumbers.add(15);
+        myNumbers.add(20);
+        myNumbers.add(34);
+        myNumbers.add(8);
+        myNumbers.add(12);
+        System.out.println("before set = " + myNumbers);
+        myNumbers.set(3,1);
+
+        System.out.println("before sorting = " + myNumbers);
+        Collections.sort(myNumbers);
+        System.out.println("after sorting = " + myNumbers);
     }
 }
