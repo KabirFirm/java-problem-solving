@@ -350,6 +350,28 @@ public class Playground {
         return minimumIndex;
     }
 
+    public static int triangle(int[] A) {
+        if(A.length < 3) return 0;
+
+        ArrayList<Integer> aList = new ArrayList<Integer>();
+        for (int i = 0; i < A.length; i++){
+            aList.add(A[i]);
+        }
+        Collections.sort(aList);
+
+        Long[] aOrdered = new Long[A.length];
+        int index = 0;
+        for (Integer i: aList){
+            aOrdered[index++] = i.longValue();
+        }
+        for (int i = aOrdered.length-1; i >=2; i--) {
+            if(aOrdered[i] < aOrdered[i-1] + aOrdered[i-2]){
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
 
         /*
@@ -442,7 +464,7 @@ public class Playground {
         /*System.out.println(powRecursiveA(2,0));
         System.out.println(powRecursiveB(2,0));*/
 
-        ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+        /*ArrayList<Integer> myNumbers = new ArrayList<Integer>();
         myNumbers.add(33);
         myNumbers.add(15);
         myNumbers.add(20);
@@ -454,6 +476,9 @@ public class Playground {
 
         System.out.println("before sorting = " + myNumbers);
         Collections.sort(myNumbers);
-        System.out.println("after sorting = " + myNumbers);
+        System.out.println("after sorting = " + myNumbers);*/
+
+        // triangle
+        System.out.println(triangle(new int[] {-5, -3, -1, 2, 4, 5}));
     }
 }
